@@ -39,6 +39,14 @@
       100% { opacity: 1.0; }
   }
 
+  @-webkit-keyframes slip {
+        0% { opacity: 1.0; }
+       13% { opacity: 1.0; }
+       17% { opacity: 0.0; }
+       97% { opacity: 0.0; }
+      100% { opacity: 1.0; }
+  }
+
   .stacked {
       position: absolute;
       left:     0px;
@@ -46,13 +54,20 @@
       -webkit-animation: slip 60s ease-in-out infinite;
   }
 
-  #slide1 { animation-delay: 50s; }
-  #slide2 { animation-delay: 40s; }
-  #slide3 { animation-delay: 30s; }
-  #slide4 { animation-delay: 20s; }
-  #slide5 { animation-delay: 10s; }
-  #slide6 { animation-delay:  0s; }
+  #slide1 {         animation-delay: 50s;
+            -webkit-animation-delay: 50s; }
+  #slide2 {         animation-delay: 40s;
+            -webkit-animation-delay: 40s; }
+  #slide3 {         animation-delay: 30s;
+            -webkit-animation-delay: 30s; }
+  #slide4 {         animation-delay: 20s;
+            -webkit-animation-delay: 20s; }
+  #slide5 {         animation-delay: 10s;
+            -webkit-animation-delay: 10s; }
+  #slide6 {         animation-delay:  0s;
+            -webkit-animation-delay:  0s; }
   </style>
+
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </head>
 <body itemscope="" itemtype="http://schema.org/WebPage">
