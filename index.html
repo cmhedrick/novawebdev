@@ -12,6 +12,47 @@
   <link rel="Search" title="[Search]" href="http://novawebdevelopment.org/sitemap.html" />
   <link rel="stylesheet" href="static/css/styles.css" />
   <title>Home</title>
+  <style>
+  /* Banged out by Kevin Cole [kjcole@ubuntu.com] 2014.10.23
+   *
+   * OMG! Just stack all five images on top of one another and change
+   * the transparency levels with CSS animation!
+   *
+   * http://www.w3schools.com/cssref/pr_pos_z-index.asp
+   * http://www.w3schools.com/cssref/tryit.asp?filename=trycss_anim_z-index
+   * http://themarklee.com/2013/10/16/simple-crossfading-slideshow-css/
+   * http://css3.bradshawenterprises.com/cfimg/
+   */
+
+  #slides {
+      width:    490px;
+      height:   276px;
+      margin:   0px auto;
+      position: relative;
+  }
+
+  @keyframes slip {
+        0% { opacity: 1.0; }
+       13% { opacity: 1.0; }
+       17% { opacity: 0.0; }
+       97% { opacity: 0.0; }
+      100% { opacity: 1.0; }
+  }
+
+  .stacked {
+      position: absolute;
+      left:     0px;
+              animation: slip 60s ease-in-out infinite;
+      -webkit-animation: slip 60s ease-in-out infinite;
+  }
+
+  #slide1 { animation-delay: 50s; }
+  #slide2 { animation-delay: 40s; }
+  #slide3 { animation-delay: 30s; }
+  #slide4 { animation-delay: 20s; }
+  #slide5 { animation-delay: 10s; }
+  #slide6 { animation-delay:  0s; }
+  </style>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </head>
 <body itemscope="" itemtype="http://schema.org/WebPage">
@@ -34,10 +75,31 @@
 </header>
   
 <article id="essence" role="main">
-<ul>
-<li><img id="slide" src="media/filer_public/ee/b6/eeb6f0de-22f8-4479-8299-e9a63539b174/slide_1.png" style="opacity: 0.0;" />
-</li>
-</ul>
+<div id="slides">
+  <img id="slide1"
+       class="stacked"
+       src="media/filer_public/ee/b6/eeb6f0de-22f8-4479-8299-e9a63539b174/slide_1.png" />
+
+  <img id="slide2"
+       class="stacked"
+       src="media/filer_public/fd/8f/fd8fdf69-4d81-4815-b617-1206a81c2f18/slide_2.png" />
+
+  <img id="slide3"
+       class="stacked"
+       src="media/filer_public/43/d7/43d77c82-7157-45ad-896a-0dd136e8146a/slide_3.png" />
+
+  <img id="slide4"
+       class="stacked"
+       src="media/filer_public/1d/b4/1db4d86e-30b8-4efb-ae9a-240b073a8e4b/slide_4.png" />
+
+  <img id="slide5"
+       class="stacked"
+       src="media/filer_public/5e/97/5e972780-87a1-4d25-8c52-88a7d75724e5/slide_5.png" />
+
+  <img id="slide6"
+       class="stacked"
+       src="media/filer_public/86/f0/86f0f281-2b1b-49df-b93e-ab94926734dd/slide_6.png" />
+</div>
 
 
 <section class="col-md-4columns">
@@ -128,62 +190,6 @@
       <span itemprop="postalCode">22204</span></span></span></span>
       <br />&nbsp;
     </footer>
-
-<script>
-var photos = new Array (
-                       "/ee/b6/eeb6f0de-22f8-4479-8299-e9a63539b174/slide_1.png",
-                       "/fd/8f/fd8fdf69-4d81-4815-b617-1206a81c2f18/slide_2.png",
-                       "/1d/b4/1db4d86e-30b8-4efb-ae9a-240b073a8e4b/slide_4.png",
-                       "/5e/97/5e972780-87a1-4d25-8c52-88a7d75724e5/slide_5.png",
-                       "/86/f0/86f0f281-2b1b-49df-b93e-ab94926734dd/slide_6.png"
-);
-
-var showFor   = 6000;   // 6 seconds (6000 ms)
-var which     = 0;      // Slide index
-var degree    = 0.0;    // Degree of opacity
-var direction = 1;      // Start with fade in (increase)
-var slide     = null;   // img element reference used later
-var getSlide  = null;   // Timer for next slide
-var fadeIn    = null;   // Timer for fade in and out
-var flip      = null;   // Timer for changing fade direction
-
-// OK... New theories:
-//
-//   1. direction can and probably should be an argument to fader.
-//   2. nextSlide needs to set a one-time (setTimeout) call to a setInterval
-//      for fading in. When fade-in is at 100%, it should clearInterval
-//      itself. This should start immediately.
-//   3. The running time for the fade in should be 1/3 the showFor 
-//      duration.
-//   4. nextSlide also needs to set a one-time (setTimeout) call to a
-//      setInterval for fading out. When fade-out reaches 0%, it should
-//      clearInterval itself. This should start 2/3 through showFor,
-//      and also run for 1/3 the duration of showFor.
-
-function nextSlide() {
-  slide.src = "media/filer_public" + photos[which];  // Set the img src="" to filename
-  which = (which + 1) % photos.length;               // Point to the next picture in the list
-//setTimeout(function () {}, 0)
-//clearInterval()
-}
-
-function fader() {
-  percent = degree / 100.0;
-  slide.style.opacity = percent;              // Expects values between 0.0 and 1.0
-  degree = (degree + (5 * direction)) % 105;  // Reduce transparency, increase opacity
-}
-
-function reverse() {
-  direction = direction * -1;  // Reverse the direction of the fade
-}
-
-onload = function() {
-  slide = document.getElementById("slide");          // Save the location of the img with id="slide"
-  var getSlide = setInterval(nextSlide, showFor);    // Every showFor seconds, use nextSlide to set new slide
-  var fadeIn   = setInterval(fader,     showFor/40); // 20 increments (of 5) in half the showFor length
-  var flip     = setInterval(reverse,   showFor/2);  // At the halfway point, change directions
-}
-
-</script>    
+    
 </body>
 </html>
