@@ -22,13 +22,18 @@
    * http://www.w3schools.com/cssref/tryit.asp?filename=trycss_anim_z-index
    * http://themarklee.com/2013/10/16/simple-crossfading-slideshow-css/
    * http://css3.bradshawenterprises.com/cfimg/
+   *
+   * image    width: 490px;    height: 276px;
+   *
    */
 
   #slides {
-      width:    490px;
-      height:   276px;
-      margin:   0px auto;
-      position: relative;
+      max-width:  490px;
+      height:     276px;
+      margin:     0px auto;
+      position:   relative;
+      border:     1px solid #888888;
+      box-shadow: 10px 10px 5px #888888;
   }
 
   @keyframes slip {
@@ -48,8 +53,11 @@
   }
 
   .stacked {
-      position: absolute;
-      left:     0px;
+      display:    block;
+      max-width:  100%;
+      height:     auto;
+      position:   absolute;
+      left:       0px;
               animation: slip 60s ease-in-out infinite;
       -webkit-animation: slip 60s ease-in-out infinite;
   }
@@ -74,7 +82,7 @@
 
     <header id="section_header" role="banner">
     <img id="logo" src="static/images/GoldenNOVAlogo.svg" alt="NOVA Web Development" title="NOVA Web Development">
-    
+
 <ul class="nav">
     <li><a href="index.html">Home</a>
     </li>
@@ -82,13 +90,13 @@
     </li>
     <li><a href="en/cms/services/index.html">What We Do</a>
     </li>
-    
+
     <li><a href="en/cms/portfolio/index.html">Portfolio</a>    </li>
     <li><a href="forums/contact/index.html">Contact Us</a>
     </li>
 </ul>
 </header>
-  
+
 <article id="essence" role="main">
 <div id="slides">
   <img id="slide1"
@@ -205,6 +213,19 @@
       <span itemprop="postalCode">22204</span></span></span></span>
       <br />&nbsp;
     </footer>
-    
+
+<script type="text/javascript">
+// Written by Kevin Cole [kjcole@ubuntu.com] 2014.10.24
+//
+// Dynamically resize the slideshow parent div to the size of the
+// auto-resizing images within it. Sadly, it appears I cannot
+// force the slideshow parent div to resize any other way. Bugger.
+
+window.onload = window.onresize = function () {
+  var slides = document.getElementById("slides");
+  var slide  = slides.children[0];
+  slides.style.height = slide.offsetHeight + "px";
+}
+</script>
 </body>
 </html>
