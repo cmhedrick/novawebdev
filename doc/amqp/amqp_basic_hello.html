@@ -1,0 +1,133 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>2. send.py &mdash; Learning AMQP</title>
+    
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="copyright" title="Copyright" href="copyright.html" />
+    <link rel="top" title="Learning AMQP" href="index.html" />
+    <link rel="next" title="4. long_send.py" href="amqp_long_distance.html" />
+    <link rel="prev" title="1. Preparation and Installation" href="preparation.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="amqp_long_distance.html" title="4. long_send.py"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="preparation.html" title="1. Preparation and Installation"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Learning AMQP</a> &raquo;</li> 
+      </ul>
+    </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body">
+            
+  <div class="section" id="send-py">
+<span id="index-0"></span><h1>2. send.py<a class="headerlink" href="#send-py" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">#!/usr/bin/env python</span>
+<span class="c"># Written by Kevin Cole &lt;kjcole@gallaudet.edu&gt; 2013.09.02</span>
+<span class="c">#</span>
+<span class="c"># Modifying the instructions at</span>
+<span class="c">#</span>
+<span class="c">#    http://www.rabbitmq.com/tutorials/tutorial-one-python.html</span>
+<span class="c">#</span>
+<span class="c"># to work with preinstalled amqp rather than install yet some other</span>
+<span class="c"># random piece to keep track of.</span>
+<span class="c">#</span>
+
+<span class="kn">import</span> <span class="nn">amqp</span>
+
+<span class="n">connection</span> <span class="o">=</span> <span class="n">amqp</span><span class="o">.</span><span class="n">Connection</span><span class="p">()</span>
+<span class="n">channel</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">channel</span><span class="p">()</span>
+<span class="n">channel</span><span class="o">.</span><span class="n">queue_declare</span><span class="p">(</span><span class="n">queue</span><span class="o">=</span><span class="s">&quot;hello&quot;</span><span class="p">)</span>
+<span class="n">msg</span> <span class="o">=</span> <span class="n">amqp</span><span class="o">.</span><span class="n">Message</span><span class="p">(</span><span class="n">body</span><span class="o">=</span><span class="s">&quot;Hello World!&quot;</span><span class="p">)</span>
+<span class="n">channel</span><span class="o">.</span><span class="n">basic_publish</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">exchange</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">,</span> <span class="n">routing_key</span><span class="o">=</span><span class="s">&quot;hello&quot;</span><span class="p">)</span>
+<span class="k">print</span> <span class="s">&quot; [X] Sent &#39;Hello World!&#39;&quot;</span>
+<span class="n">connection</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="receive-py">
+<h1>3. receive.py<a class="headerlink" href="#receive-py" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">#!/usr/bin/env python</span>
+<span class="c"># Written by Kevin Cole &lt;kjcole@gallaudet.edu&gt; 2013.09.02</span>
+<span class="c">#</span>
+<span class="c"># Modifying the instructions at</span>
+<span class="c">#</span>
+<span class="c">#    http://www.rabbitmq.com/tutorials/tutorial-one-python.html</span>
+<span class="c">#</span>
+<span class="c"># to work with preinstalled amqp rather than install yet some other</span>
+<span class="c"># random piece to keep track of.</span>
+<span class="c">#</span>
+
+<span class="kn">import</span> <span class="nn">amqp</span>
+
+<span class="k">def</span> <span class="nf">callback</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
+    <span class="k">print</span> <span class="s">&quot; [X] Received </span><span class="si">%r</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">body</span><span class="p">,)</span>
+
+<span class="n">connection</span> <span class="o">=</span> <span class="n">amqp</span><span class="o">.</span><span class="n">Connection</span><span class="p">()</span>
+<span class="n">channel</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">channel</span><span class="p">()</span>
+<span class="n">channel</span><span class="o">.</span><span class="n">queue_declare</span><span class="p">(</span><span class="n">queue</span><span class="o">=</span><span class="s">&quot;hello&quot;</span><span class="p">)</span>
+<span class="k">print</span> <span class="s">&quot; [*] Waiting for message. To exit press Ctrl-C&quot;</span>
+<span class="n">channel</span><span class="o">.</span><span class="n">basic_consume</span><span class="p">(</span><span class="n">queue</span><span class="o">=</span><span class="s">&quot;hello&quot;</span><span class="p">,</span> <span class="n">no_ack</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="n">callback</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+     <span class="n">channel</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="amqp_long_distance.html" title="4. long_send.py"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="preparation.html" title="1. Preparation and Installation"
+             >previous</a> |</li>
+        <li><a href="index.html">Learning AMQP</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; <a href="copyright.html">Copyright</a> 2013, Kevin Cole.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>

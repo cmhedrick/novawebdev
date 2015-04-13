@@ -1,0 +1,112 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>1. Preparation and Installation &mdash; Learning AMQP</title>
+    
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="copyright" title="Copyright" href="copyright.html" />
+    <link rel="top" title="Learning AMQP" href="index.html" />
+    <link rel="next" title="2. send.py" href="amqp_basic_hello.html" />
+    <link rel="prev" title="Copyright Notice" href="copyright.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="amqp_basic_hello.html" title="2. send.py"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="copyright.html" title="Copyright Notice"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Learning AMQP</a> &raquo;</li> 
+      </ul>
+    </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body">
+            
+  <div class="section" id="preparation-and-installation">
+<span id="index-0"></span><h1>1. Preparation and Installation<a class="headerlink" href="#preparation-and-installation" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>sudo pip install django-celery
+</pre></div>
+</div>
+<p>Installs <tt class="docutils literal"><span class="pre">django-celery</span></tt>, <tt class="docutils literal"><span class="pre">celery</span></tt>, <tt class="docutils literal"><span class="pre">billiard</span></tt>, <tt class="docutils literal"><span class="pre">kombu</span></tt>,
+<tt class="docutils literal"><span class="pre">anyjson</span></tt> and <tt class="docutils literal"><span class="pre">amqp</span></tt>.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>sudo apt-get install rabbitmq-server
+</pre></div>
+</div>
+<p>On the Red Hat side of the fence:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>rpm --import http://www.rabbitmq.com/rabbitmq-signing-key-public.asc
+<span class="nv">$ </span>yum install rabbitmq-server-3.1.5-1.noarch.rpm
+</pre></div>
+</div>
+<p>Installs <tt class="docutils literal"><span class="pre">rabbit-server</span></tt>, and a kitchen sink&#8217;s worth of <tt class="docutils literal"><span class="pre">erlang</span></tt>.</p>
+<p>Also, on the Red Hat machine, we had to open a port in the firewall:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>sudo -i
+<span class="nv">$ </span><span class="nb">cd</span> /etc/sysconfig/
+<span class="nv">$ </span>cat &gt;&gt; iptables
+-A INPUT   -s 999.999.0.0/16    -m tcp -p tcp --dport 5672  -j ACCEPT
+</pre></div>
+</div>
+<p>Poke around with <tt class="docutils literal"><span class="pre">$</span> <span class="pre">pydoc</span> <span class="pre">amqp</span></tt> and <tt class="docutils literal"><span class="pre">$</span> <span class="pre">pydoc</span> <span class="pre">kombu</span></tt> to learn a bit more.</p>
+<p>See also:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://www.rabbitmq.com/download.html">http://www.rabbitmq.com/download.html</a></li>
+<li><a class="reference external" href="http://www.rabbitmq.com/install-rpm.html">http://www.rabbitmq.com/install-rpm.html</a></li>
+<li><a class="reference external" href="http://blog.springsource.com/2010/08/19/building-rabbitmq-apps-using-python/">http://blog.springsource.com/2010/08/19/building-rabbitmq-apps-using-python/</a></li>
+<li><a class="reference external" href="https://pypi.python.org/pypi/amqp/">https://pypi.python.org/pypi/amqp/</a></li>
+<li><a class="reference external" href="http://kombu.readthedocs.org/en/latest/">http://kombu.readthedocs.org/en/latest/</a></li>
+</ul>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="amqp_basic_hello.html" title="2. send.py"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="copyright.html" title="Copyright Notice"
+             >previous</a> |</li>
+        <li><a href="index.html">Learning AMQP</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; <a href="copyright.html">Copyright</a> 2013, Kevin Cole.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>

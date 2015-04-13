@@ -1,0 +1,45 @@
+.. Learning Advanced Message Queuing Protocol (AMQP) master file,
+   created by sphinx-quickstart on Wed Sep 4 15:53:10 2013.
+   You can adapt this file completely to your liking, but it should
+   at least contain the root `toctree` directive.
+
+Learning Advanced Message Queuing Protocol (AMQP)
+=================================================
+
+by Kevin Cole
+
+* `Copyright Notice <copyright.html>`__
+* `Preparation and installation <preparation.html>`__
+* `Simplest "Hello World" example using ampq module <amqp_basic_hello.html>`__
+* `Across the ether: Betwixt two machines <amqp_long_distance.html>`__
+* `GNU Free Document License <fdl-1.3.html>`__
+
+Contents:
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   copyright.rst
+
+.. toctree::
+   :maxdepth: 1
+   :numbered:
+   :hidden:
+
+   preparation.rst
+   amqp_basic_hello.rst
+   amqp_long_distance.rst
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   fdl-1.3.rst
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`

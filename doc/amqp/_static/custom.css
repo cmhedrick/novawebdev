@@ -1,0 +1,46 @@
+/************************************************************************
+ * custom.css                                                           *
+ * ~~~~~~~~~~                                                           *
+ * Written by Kevin Cole <kjcole@ubuntu.com> 2011.02.08                 *
+ *                                                                      *
+ * Based on sphinxdoc.css but designed to compensate for weird stuff    *
+ * (like tables not being wide enough)                                  *
+ ************************************************************************/
+
+@import url("sphinxdoc.css");
+
+/* -- tables ---------------------------------------------------------- */
+
+table.docutils {
+    border: 1px solid #7f7f7f;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table.docutils td, table.docutils th {
+    padding: 1px 8px 1px 5px;
+    border: 1px solid #7f7f7f;
+    border-collapse: collapse;
+}
+
+table.field-list td, table.field-list th {
+    border: 0 !important;
+}
+
+table.footnote td, table.footnote th {
+    border: 0 !important;
+}
+
+th {
+    text-align: left;
+    padding-right: 5px;
+}
+
+table.citation {
+    border-left: solid 1px gray;
+    margin-left: 1px;
+}
+
+table.citation td {
+    border-bottom: none;
+}
