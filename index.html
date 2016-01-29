@@ -11,6 +11,7 @@
     <link rel="author" title="[Kevin Cole]" href="http://novawebdevelopment.org/~kjcole/" />
     <link rel="Search" title="[Search]" href="http://novawebdevelopment.org/sitemap.html" />
     <link rel="stylesheet" href="static/css/styles.css" />
+    <link href='http://fonts.googleapis.com/css?family=Sarala' rel='stylesheet' type='text/css'>
 <title>Home</title>
 
     <style>
@@ -27,54 +28,58 @@
    * image    width: 490px;    height: 276px;
    *
    */
+#slides {
+    border: 1px solid #888888;
+    box-shadow: 10px 10px 5px #888888;
+    height: 34vw;
+    margin: 2.6vw 2.5vw;
+    max-width: 55vw;
+    position: relative;
+}
+@keyframes slip {
+0% {
+    opacity: 1;
+}
+13% {
+    opacity: 1;
+}
+17% {
+    opacity: 0;
+}
+97% {
+    opacity: 0;
+}
+100% {
+    opacity: 1;
+}
+}
+.stacked {
+    animation: 60s ease-in-out 0s normal none infinite running slip;
+    display: block;
+    height: 34vw;
+    left: 0;
+    max-width: 100%;
+    position: absolute;
+}
+#slide1 {
+    animation-delay: 50s;
+}
+#slide2 {
+    animation-delay: 40s;
+}
+#slide3 {
+    animation-delay: 30s;
+}
+#slide4 {
+    animation-delay: 20s;
+}
+#slide5 {
+    animation-delay: 10s;
+}
+#slide6 {
+    animation-delay: 0s;
+}
 
-  #slides {
-      max-width:  490px;
-      height:     276px;
-      margin:     0px auto;
-      position:   relative;
-      border:     1px solid #888888;
-      box-shadow: 10px 10px 5px #888888;
-  }
-
-  @keyframes slip {
-        0% { opacity: 1.0; }
-       13% { opacity: 1.0; }
-       17% { opacity: 0.0; }
-       97% { opacity: 0.0; }
-      100% { opacity: 1.0; }
-  }
-
-  @-webkit-keyframes slip {
-        0% { opacity: 1.0; }
-       13% { opacity: 1.0; }
-       17% { opacity: 0.0; }
-       97% { opacity: 0.0; }
-      100% { opacity: 1.0; }
-  }
-
-  .stacked {
-      display:    block;
-      max-width:  100%;
-      height:     auto;
-      position:   absolute;
-      left:       0px;
-              animation: slip 60s ease-in-out infinite;
-      -webkit-animation: slip 60s ease-in-out infinite;
-  }
-
-  #slide1 {         animation-delay: 50s;
-            -webkit-animation-delay: 50s; }
-  #slide2 {         animation-delay: 40s;
-            -webkit-animation-delay: 40s; }
-  #slide3 {         animation-delay: 30s;
-            -webkit-animation-delay: 30s; }
-  #slide4 {         animation-delay: 20s;
-            -webkit-animation-delay: 20s; }
-  #slide5 {         animation-delay: 10s;
-            -webkit-animation-delay: 10s; }
-  #slide6 {         animation-delay:  0s;
-            -webkit-animation-delay:  0s; }
   </style>
 <script src="/static/js/jquery-1.11.1.min.js"></script>
 </head>
@@ -93,7 +98,7 @@
         <li><a href="/templates/services.html">What We Do</a></li>
         <li><a href="/templates/portfolio.html">Portfolio</a></li>
         <li><a href="/templates/contact.html">Contact Us</a></li>
-        <li><a href="/project/middleEast_Nafrica/index.html">Project</a></li>
+        <li><a href="../project/middleEast_Nafrica/index.html">Project</a></li>
     </ul>
 <div class="handle">
    <img id="icon" src="static/images/Icon.svg" alt="icon">
@@ -110,9 +115,23 @@
     <img id="slide5" class="stacked" src="media/slide_5.png" />
     <img id="slide6" class="stacked" src="media/slide_6.png" />
 </div>
+<div class="column">
+<img id="icon" src="static/images/whatwedoicon.svg" alt="icon">
+<h2>What We do</h2>
+    <p>
+        We offer some of the newest technology for building the ideal website. 
+        We use HTML5 which is the newest markup language availble to construct 
+        the site. To style the site we use CSS3 to help with styling and creating 
+        a responsive design. We also use Javascript and Jquery to make the site 
+        interactive. Our backend of choice is also the ever popular Django to tie 
+        everything together!
+    </p>
+</div>
 
-<section class="columns">
-    <h2>About</h2>
+<div class="columns">
+<img id="icon" src="static/images/about.svg" alt="icon">
+  
+  <h2>About</h2>
     <p>
         NOVA Web Development provides web page design and web
         application development at affordable rates for civic, academic,
@@ -120,8 +139,10 @@
         Buyers and Renters Arlington Voice (BRAVO), Gallaudet University,
         and the Rosslyn Chamber of Commerce.
     </p>
-</section>
-<section class="columns">
+</div>
+<div class="column1">
+ <img id="icon" src="static/images/service.svg" alt="icon">
+   
     <h2>Service</h2>
     <p>
         We offer web page design and web application development using
@@ -130,10 +151,12 @@
         framework. Our websites are responsive and we have experience with
         data visualization.
     </p>
-</section>
+</div>
 
-<section class="columns">
-    <h2>Who We Are</h2>
+<div class="column2">
+<img id="icon" src="static/images/aboutus.svg" alt="icon">
+    
+<h2>Who We Are</h2>
     <p> 
         We are a co-op with an educational and service focus. Our young
         web professionals work side-by-side with experienced veterans
@@ -142,7 +165,7 @@
         with a dedication to software freedom and strive to create the
         world we want to live in.
     </p>
-</section>
+</div>
 
 
 <br style="clear:both;" />

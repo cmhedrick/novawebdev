@@ -13,113 +13,149 @@
 @page {
     size: 8.5in 11in;
 }
-
 body {
-    background-color: #ADBAE7;
+    background-color: #adbae7;
     color: #000000;
     font-family: Verdana,Arial,Helvetica,sans-serif;
+    height: auto;
     margin: 0;
     position: static;
     width: 100%;
-    height: auto;
 }
-
-/* WAS 1c577f will be #2477AA */
 #section_header {
-    background: none repeat scroll 0 0 #0005b3;
-    box-shadow: 14px 0 25px 11px rgba(0, 43, 70, 0.64);
-    margin: 1% 1% 4%;
+    background: #0005b3 none repeat scroll 0 0;
+    height: 4vw;
+    margin: 0vw 3.5vw 4vw;
+    padding: 1vw;
     position: static;
-    width: 98%;
+    width: 90vw;
 }
-
-#logo{
-    margin-left: 5%;
-    margin-top: 2%;
-    width: 17%;
-    margin-bottom: 2%;
+#logo {
+    height: 4vw;
+    margin-bottom: 1vw;
+    margin-left: 3vw;
+    margin-top: 0vw;
+    width: 13vw;
 }
 nav {
+    background: #adbae7 none repeat scroll 0 0;
+    border-radius: 2vw;
     float: right;
-    margin-top: 3%;
+    height: 4vw;
+    margin-right: 1vw;
+    margin-top: 0vw;
     position: static;
-    margin-right: 5%;
 }
 nav ul {
     color: rgb(255, 255, 255);
+    margin: 1vw;
     padding: 0;
 }
 nav ul li {
-    list-style-type: none;
     display: inline;
-     width: 2vw; 
-
+    list-style-type: none;
+    width: 2vw;
 }
 nav ul li a {
-    border-color: white turquoise;
-    border-radius: 1px;
+    background: #f8cf2e none repeat scroll 0 0;
+    border-color: orchid;
+    border-radius: 0.2vw;
     border-style: solid;
-    border-width: medium thick;
-    color: #ffffff;
-    font-size: 1.3vw;
-    padding: 3px 19px;
+    border-width: 0.1vw;
+    color: #000000;
+    font-family: "Amita",cursive;
+    font-size: 1.2vw;
+    font-weight: 400;
+    margin: 1vw;
+    padding:0.5vw;
     text-align: center;
     text-decoration: none;
 }
+nav ul li a:hover {
+    color: white;
+    background: #0005b3;
+    border-color: white;
+}
 .handle {
-     width: 100%;
-     text-align: right;
-     box-sizing: border-box;
-     display: none;
-     color: #ffffff;
-
+    box-sizing: border-box;
+    color: #ffffff;
+    display: none;
+    text-align: right;
+    width: 100%;
 }
 #icon {
-    float: right;
-    width: 7%;
-    position: relative;
-    box-sizing: border-box;
-    margin-top: -9.5%;
-    margin-right: 3%;
+    float: left;
+    height: 7vw;
+    margin: 0vw 1vw;
+    position: static;
+    text-align: center;
+    width: 5vw;
 }
 article {
-
     background-color: #ffffff;
-    border-radius: 15px;
+    border-radius: 0;
     clear: both;
     color: #548ccd;
+    height: auto;
     margin: auto;
-    min-height: 200px;
-    padding: 10px;
     position: relative;
-    top: 9px;
-    width: 60%;
-    box-shadow: 8px 0 16px 8px rgba(0, 43, 70, 0.36);
+    top: -4vw;
+    width: 90vw;
+    padding: 1vw;
 }
-.columns {
-    position: static;
-    display: table-cell;
+.profile {
+    border-style: dashed;
+    border-width: 0.1vw;
+    display: block;
+    height: 24vw;
+    margin: 8vw 1vw 8vw 5vw;
+    padding: 1vw;
+    width: 18vw;
+}
+.pro-image {
+    height: 13vw;
+    margin: -5vw 5.5vw;
+    padding-right: 10px;
+    width: 12vw;
+}
+span {
+    font-size: 1vw;
+    margin: 0vw -1vw;
+    padding: 1vw;
+}
+.column, .columns, .column1, .column2 {
+    background: #adbae7 none repeat scroll 0 0;
+    display: inline-table;
     font-size: 1.8vw;
+    height: 30vw;
+    margin: 0.7vw 0.3vw 0vw 2.9vw;
+    padding: 2vw;
+    position: static;
+    width: 22vw;
+}
+.column {
+    float: right;
+    margin: -36.7vw 2.5vw;
 }
 h2 {
+    color: #222222;
     font-size: 0.9em;
     font-weight: bold;
-    text-align: center;
-    color: #222222;
-    margin-left: -3px;
-    margin-top: 33px;
+    margin-left: 0;
+    margin-top: 0vw;
+    text-align: left;
 }
-footer {
-    background-color: #6D8AEC;
-    position: static;
-    width: 100%;
-    margin: 16% auto auto;
+#section_footer {
+    background-color: #6d8aec;
     height: auto;
-
+    margin: -4vw auto;
+    position: static;
+    width: 92vw;
+    clear: both;
 }
 footer #social {
-    width:   300px;
-    margin:  auto;
+    margin: auto;
+    width: 300px;
 }
 footer img {
     border: 0 none;
@@ -127,70 +163,52 @@ footer img {
     margin: 15px auto;
     width: 90px;
 }
-
 footer #legal {
     font-size: 10pt;
     margin: 5px auto;
     text-align: center;
 }
-
-/***********************************************************************/
 .main img {
-    width: 100%;
- 
+    width: 63%;
 }
 p {
-    margin: 1.2em 1em;
+    color: #222222;
     font-family: Verdana,Arial,Helvetica,sans-serif;
     font-size: 13px;
     line-height: 2.125;
-    color: #222222;
+    margin: 2vw;
 }
-
 h1 {
     color: #191970;
     margin: 1em 1em 1.2em;
 }
-/*Profile CSS*/
-
-.profile {
-    display: inline-block;
-    margin-top: 2%;
-}
-.pro-image {
-    padding-right: 10px;
-    float: left;
-}
-@media screen and (min-width : 300px) and (max-width: 800px) {
+@media screen and (min-width: 300px) and (max-width: 800px) {
 .columns {
-     width: 100%;
-     display: block;
+    display: block;
+    width: 100%;
 }
 h2 {
     font-size: 2em;
-
-
 }
 nav {
     display: none;
 }
 nav ul li:hover {
-    background: #0066FF;
+    background: #0066ff none repeat scroll 0 0;
     color: white;
 }
-
 nav ul li a {
-    width: 100%;
+    border: medium none;
     box-sizing: border-box;
-    padding : 15px;
-    text-align: left;
-    border: none;
-    margin-left: 0;
     font-size: 5.7vw;
-
+    margin-left: 0;
+    padding: 15px;
+    text-align: left;
+    width: 100%;
 }
 .handle {
+    cursor: pointer;
     display: block;
-     cursor: pointer;
 }
 }
+
